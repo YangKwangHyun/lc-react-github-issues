@@ -1,5 +1,6 @@
 import './reset.css';
 import './App.css';
+import './github-markdown.css';
 import {Link} from "react-router-dom";
 import {useQuery} from "react-query";
 import IconOpen from "./IconOpen";
@@ -51,7 +52,7 @@ function App() {
             {isSuccess && (
                 <div className="issues-container">
                     <div className="issues-heading">
-                        <a href="#">facebook / create-react-app</a>
+                        <a href="https://github.com/facebook/create-react-app">facebook / create-react-app</a>
                         <div className="open-closed-buttons">
                             <button onClick={() => setFilter('open')}>
                                 <IconOpen/>
@@ -74,7 +75,7 @@ function App() {
                                     {issue.state === 'open' && <IconOpen/>}
                                     {issue.state === 'closed' && <IconClosed/>}
                                     <div className="issues-title">
-                                        <Link to={`/issues/1`}>
+                                        <Link to={`/issues/${issue.number}`}>
                                             {issue.title}
                                         </Link>
                                         <div className="issues-title-details">
@@ -83,7 +84,7 @@ function App() {
                                     </div>
                                 </div>
                                 {issue.comments > 0 && (
-                                    <Link to={`/issues/1`} className="comments-count-container">
+                                    <Link to={`/issues/${issue.number}`} className="comments-count-container">
                                         <svg
                                             className="octicon octicon-comment v-align-middle"
                                             viewBox="0 0 16 16"
